@@ -197,7 +197,23 @@
   };
 
   
-
+    .hideme
+      {
+          opacity:0;
+      }
+      .otp-input {
+                  width: 50px;
+                  height: 50px;
+                  text-align: center;
+                  font-size: 20px;
+                  margin: 5px;
+                  border: 2px solid #007bff;
+                  border-radius: 5px;
+              }
+      #success-message {
+                  display: none; /* ซ่อน div ในตอนแรก */
+                  
+              }
 
     </style>
   </head>
@@ -274,8 +290,9 @@
     </div>
 </div>
 
-      <div class="row mt-2 pt-2 justify-content-center">
+      <!-- <div class="row mt-2 pt-2 justify-content-center">
         <div class="col-md-4 col-sm-8">
+
           
           <div class="card border-0" style="background-color: #ffffff77">
             <div class="card-body">
@@ -286,8 +303,8 @@
               <p>
                 สุขสันต์วันเกิดนะค้าบ!🎉🎆🎊🎁 อายุ 27 ปี ล่ะนะ </p>
                 <p>
-                  ขอให้หนูมีความสุขมากๆ น๊า สำหรับวันเกิดปีนี้ ขอให้ไม่ร่างกายแข็งแรง ไม่เจ็บไม่ป่วยบ่อย😊
-                  ป๊าอยากให้ปีนี้เป็นปีที่เต็มไปด้วยความสุข และสมหวังในทุกสิ่งที่นู๋จ๋าตั้งใจทุกอย่างเลย
+                  ขอให้หนูมีความสุขมากๆ น๊า สำหรับวันเกิดปีนี้ ขอให้สุขร่างกายแข็งแรง ไม่เจ็บไม่ป่วยบ่อย😊
+                  ขอปีนี้เป็นปีที่เต็มไปด้วยความสุขและสมหวังในทุกสิ่งที่นู๋จ๋าตั้งใจทุกอย่างเลย
                    ขอให้ปีนี้ พรที่หนูคิดและคาดหวังไว้เป็นจริงทุกอย่างเลย
                 </p>
                 <p>
@@ -298,7 +315,48 @@
             </div>
           </div>
         </div>
+      </div> -->
+
+      <div class="row mt-2 pt-2 justify-content-center text-center">
+        <div class="col-md-4">
+          <h1 class="display-3 fw-bold " style="color: #f78da4 ">Memories </h1>
+          <h1 class="display-3 fw-bold" style="color: #f78da4 ">Zone 📸</h1>
+          <h1 class="display-6 fw-bold" style="color: #f78da4 "> ใส่รหัสผ่านเพื่อ Opens ค้าบ 😘</h1>
+        </div>
       </div>
+
+      <div id="otp-container" class="row mt-2 pt-2 justify-content-center mb-5">
+        <div class="col-4 text-center hideme justify-content-center d-flex">
+            <input type="text" class="otp-input form-control" maxlength="1" id="otp1">
+            <input type="text" class="otp-input form-control" maxlength="1" id="otp2">
+            <input type="text" class="otp-input form-control" maxlength="1" id="otp3">
+            <input type="text" class="otp-input form-control" maxlength="1" id="otp4">
+            <input type="text" class="otp-input form-control" maxlength="1" id="otp5">
+            <input type="text" class="otp-input form-control" maxlength="1" id="otp6">
+          
+        </div>
+      </div>
+      <div id="success-message" class="row mt-2 pt-2 justify-content-center mb-5">
+            <div class="card border-0 col-md-4 col-sm-8" style="background-color: #ffffff77">
+            <div class="card-body">
+               
+              <img src="./images/star.svg" class="floating-second starFirst" />
+              <img src="./images/star.svg" class="floating-second starSecond" />
+             <p>
+                สุขสันต์วันเกิดนะค้าบ!🎉🎆🎊🎁 อายุ 27 ปี ล่ะนะ </p>
+                <p>
+                  ขอให้หนูมีความสุขมากๆ น๊า สำหรับวันเกิดปีนี้ ขอให้สุขร่างกายแข็งแรง ไม่เจ็บไม่ป่วยบ่อย😊
+                  ขอปีนี้เป็นปีที่เต็มไปด้วยความสุขและสมหวังในทุกสิ่งที่นู๋จ๋าตั้งใจทุกอย่างเลย
+                   ขอให้ปีนี้ พรที่หนูคิดและคาดหวังไว้เป็นจริงทุกอย่างเลย
+                </p>
+                <p>
+
+                ❤️❤️ รักนู๋จ๋า ตึ้งตึงน้าาาา 😘😘😘
+                
+              </p>
+            </div>
+          </div>
+        </div>
     </div>
 
     <script
@@ -321,6 +379,33 @@
           disableOnInteraction: false,  // ทำให้การคลิกภาพไม่หยุดการเลื่อน
         },
     });
+    
+    /* Every time the window is scrolled ... */
+    $(window).scroll(function () {
+        $(".hideme").each(function () {
+            var objectTop = $(this).offset().top;
+            var windowBottom = $(window).scrollTop() + $(window).height();
+ 
+            if (windowBottom > objectTop + 10) { // +100 เพื่อให้เริ่มแสดงก่อนถึง viewport
+                $(this).animate({ opacity: 1 }, 500); // ใช้ animate เพื่อให้ fade in
+            }
+        });
+
+        $(".otp-input").on("input", function () {
+                var inputVal = $(this).val();
+                if (inputVal.length === 1) {
+                    $(this).next(".otp-input").focus();
+                }
+              
+                checkOTP();
+            });
+ 
+            $(".otp-input").on("keydown", function (e) {
+                if (e.key === "Backspace" && $(this).val() === "") {
+                    $(this).prev(".otp-input").focus();
+                }
+            });
+          });
      
       });
       
@@ -351,7 +436,18 @@
             audio.play();
         }, 1000);  // เล่นหลังจากโหลดหน้า 1 วินาที
       };
-            
+      function checkOTP() {
+                var otpValue = $(".otp-input").map(function () {
+                    return $(this).val();
+                }).get().join("");
+ 
+                if (otpValue === "292541") {
+                    $("#otp-container").hide(); // ซ่อนช่องกรอก OTP
+                    $("#otp-container").addClass('d-none'); // ซ่อนช่องกรอก OTP
+                    $("#success-message").fadeIn(); // แสดงข้อความ
+                    $("#success-message").addClass('d-flex'); // แสดงข้อความ
+                }
+            }
     </script>
   </body>
 </html>
