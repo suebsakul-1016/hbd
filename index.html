@@ -440,12 +440,19 @@
         progress.style.width = percentage + "%";
       });
 
-      window.onload = function() {
-        setTimeout(() => {
-            audio.muted = false;  // ปิด mute เพื่อให้มีเสียง
-            audio.play();
-        }, 1000);  // เล่นหลังจากโหลดหน้า 1 วินาที
-      };
+   window.onload = function() {
+    setTimeout(() => {
+        audio.muted = false;  // เปิดเสียงจากนั้น
+        audio.play().catch((error) => {
+            console.log("Error playing the audio:", error);
+            // ถ้าเกิดข้อผิดพลาด (เช่น เบราว์เซอร์บล็อกการเล่นอัตโนมัติ)
+            // ให้แสดงปุ่มให้ผู้ใช้กดเริ่มเล่นเพลงเอง
+            document.getElementById("play").addEventListener("click", () => {
+                audio.play();
+            });
+        });
+    }, 1000);  // เล่นหลังจากโหลดหน้า 1 วินาที
+};
       function checkOTP() {
                 var otpValue = $(".otp-input").map(function () {
                     return $(this).val();
