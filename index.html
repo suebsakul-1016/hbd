@@ -214,6 +214,16 @@
                   display: none; /* ซ่อน div ในตอนแรก */
                   
               }
+      /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
 
     </style>
   </head>
@@ -327,12 +337,12 @@
 
       <div id="otp-container" class="row mt-2 pt-2 justify-content-center mb-5">
         <div class="col-4 text-center hideme justify-content-center d-flex">
-            <input type="text" class="otp-input form-control" maxlength="1" id="otp1">
-            <input type="text" class="otp-input form-control" maxlength="1" id="otp2">
-            <input type="text" class="otp-input form-control" maxlength="1" id="otp3">
-            <input type="text" class="otp-input form-control" maxlength="1" id="otp4">
-            <input type="text" class="otp-input form-control" maxlength="1" id="otp5">
-            <input type="text" class="otp-input form-control" maxlength="1" id="otp6">
+            <input type="number" class="otp-input form-control" maxlength="1" id="otp1">
+            <input type="number" class="otp-input form-control" maxlength="1" id="otp2">
+            <input type="number" class="otp-input form-control" maxlength="1" id="otp3">
+            <input type="number" class="otp-input form-control" maxlength="1" id="otp4">
+            <input type="number" class="otp-input form-control" maxlength="1" id="otp5">
+            <input type="number" class="otp-input form-control" maxlength="1" id="otp6">
           
         </div>
       </div>
